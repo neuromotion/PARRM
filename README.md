@@ -20,5 +20,5 @@ Period=FindPeriodLFP(data,span,guessPeriod); % Find the period of stimulation in
 periodDist=Period/120; % Window in period space for which samples will be averaged
 
 PARRM=PeriodicFilter(Period,windowSize,periodDist,skipSize,windowDirection); % Create the linear filter
-Filtered=((filter2(PARRM.',data,'same')-data)./(1-filter2(PARRM.',ones(size(data)),'same'))+data)'; % Filter using the linea filter and remove edge effects
+Filtered=((filter2(PARRM.',data,'same')-data)./(1-filter2(PARRM.',ones(size(data)),'same'))+data)'; % Filter using the linear filter and remove edge effects
 ```
