@@ -7,7 +7,7 @@ The first step is finding the period of the artifact in the raw signal. This is 
 
 This is typically done using the following lines of code:
 
-'''Matlab
+```Matlab
 % Filter timeseries 'data' using PARRM
 % Assume 'data' has a 200Hz sampling rate and 150Hz stimulation frequency
 guessPeriod=200/150; % Theoretical stimulation period
@@ -21,4 +21,4 @@ periodDist=Period/120; % Window in period space for which samples will be averag
 
 PARRM=PeriodicFilter(Period,windowSize,periodDist,skipSize,windowDirection); % Create the linear filter
 Filtered=((filter2(PARRM.',data,'same')-data)./(1-filter2(PARRM.',ones(size(data)),'same'))+data)'; % Filter using the linea filter and remove edge effects
-'''
+```
