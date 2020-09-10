@@ -1,3 +1,15 @@
+%% FindPeriodLFP.m
+% Finds the exact period of a stimulation artifact in an LFP recordinng
+%
+%% Inputs:
+%
+%   LFP     : the data in which to find the period of stimulation
+%   Seg     : the span in samples to use for finding the period
+%   Period  : an initial guess for the value of the period
+%% Outputs:
+%
+%   Period  : an exact estimate for the period of stimulation
+
 function Period = FindPeriodLFP(LFP,Seg,Period)
 
 optN = [5000,10000,25000];

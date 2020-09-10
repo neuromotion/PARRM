@@ -1,5 +1,5 @@
 %% lfpreg.m
-% Fits a sum of sinusoids to the raw LFP data using linear regression and
+% Fits a sum of sinusoids to the fitted data using linear regression and
 % computes the residuals
 % 
 %% Inputs:
@@ -7,14 +7,12 @@
 %   lfpobs      : the raw LFP data
 %   period      : the principle period for the sum
 %   k           : the number of sines and cosines to add together for the sum
-%   grid        : the sample values in period space to compute a single cycle of the fit waveform
-%   beta        : the coefficients for the sum of sinusoids
+%   grid       : the number of samples to ignore on either side of the center of the window
+%   Direction       : 'both', 'past', or 'future' indicating which samples to use for removal relative to the current sample
 %% Outputs:
 %
-%   res         : the residuals of the fit and raw data
-%   beta        : the coefficients for the sum of sinusoids
-%   f           : a single cycle of the fitted waveform
-%   grid        : the sample values in period space to compute a single cycle of the fit waveform
+%   f               : a linear filter for removing stimulation artifact
+%   x               : the positions in samples relative to the center
 
 function [res,beta,f,grid] = lfpreg(lfpobs,period,k,grid,beta)
 
