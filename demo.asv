@@ -1,17 +1,8 @@
 % Filter an example simulated chirp timeseries (simData.downedRecording with 
-% 150 Hz stimulation artifact using PARRM)
+% 150 Hz stimulation artifact using PARRM
 %% PARRM Filter
 % simData is an example chirp simulation dataset
-% simData.downedRecording is a timeseries containing the chirps, 
-% stimulation artifact, and noise
-% simData.downedChirps is a timeseries containing solely the chirps
-% simData.downedArt is a timeseries containing solely the artifact
-% simData.downedTimes is a vector indicating the first sample for each chirp
-% simData.stimRate is the stimulation frequency
-% simData.lengthChirp is the length of the chirp in seconds
-% simData.pw is the pulse width of the stimulation in seconds
-% simData.amp is the amplitude of stimulation in mV
-% simData.true_fs is the true sampling rate for the recordings
+% simData.downedRecording is a timeseries containing the chi
 load('simData')
 fs=200; % Sampling rate of simulated data
 sepChirp=200; % Separation between subequent chirps in samples
