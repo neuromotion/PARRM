@@ -48,19 +48,19 @@ legend(["Raw","Artifact Free","PARRM Filtered"])
 % stimulation artifact is filtered using PARRM
 
 fmax=100; % Max wavelet frequency
-f=linspace(0,fmax,500); % All wavelet frequencies
+frex=linspace(0,fmax,500); % All wavelet frequencies
 cycles=linspace(1,30,500); % All wavelet cycles
-f=f(2:end); % Remove the zero wavelet
+frex=frex(2:end); % Remove the zero wavelet
 cycles=cycles(2:end);
 wavelet_half_win_size=11; % Window size for convolution
 % Calculate wavelet transforms for the three cases
-allWt=wavelet_transform_scratch(simData.downedRecording, fs, f, cycles, wavelet_half_win_size);
-chirpsWt=wavelet_transform_scratch(simData.downedChirps, fs, f, cycles, wavelet_half_win_size);
-filteredWt=wavelet_transform_scratch(Filtered, fs, f, cycles, wavelet_half_win_size);
+allWt=wavelet_transform_scratch(simData.downedRecording, fs, frex, cycles, wavelet_half_win_size);
+chirpsWt=wavelet_transform_scratch(simData.downedChirps, fs, frex, cycles, wavelet_half_win_size);
+filteredWt=wavelet_transform_scratch(Filtered, fs, frex, cycles, wavelet_half_win_size);
 
 figure
 subplot(1,3,1)
-surface(((simData.downedTimes(1):simData.downedTimes(2)-sepChirp)-simData.downedTimes(1))/fs,f,10*log10(abs(allWt(:,simData.downedTimes(1):simData.downedTimes(2)-sepChirp))))
+surface(((simData.downedTimes(1):simData.downedTimes(2)-sepChirp)-simData.downedTimes(1))/fs,frex,10*log10(abs(allWt(:,simData.downedTimes(1):simData.downedTimes(2)-sepChirp))))
 axis tight
 shading interp
 xlabel('Time (s)')
@@ -68,7 +68,7 @@ ylabel('Frequency (Hz)')
 title('Raw')
 caxis([-43.175285170456526,2.504559835797593])
 subplot(1,3,2)
-surface(((simData.downedTimes(1):simData.downedTimes(2)-sepChirp)-simData.downedTimes(1))/fs,f,10*log10(abs(chirpsWt(:,simData.downedTimes(1):simData.downedTimes(2)-sepChirp))))
+surface(((simData.downedTimes(1):simData.downedTimes(2)-sepChirp)-simData.downedTimes(1))/fs,frex,10*log10(abs(chirpsWt(:,simData.downedTimes(1):simData.downedTimes(2)-sepChirp))))
 axis tight
 shading interp
 xlabel('Time (s)')
@@ -76,7 +76,7 @@ ylabel('Frequency (Hz)')
 title('Artifact Free')
 caxis([-43.175285170456526,2.504559835797593])
 subplot(1,3,3)
-surface(((simData.downedTimes(1):simData.downedTimes(2)-sepChirp)-simData.downedTimes(1))/fs,f,10*log10(abs(filteredWt(:,simData.downedTimes(1):simData.downedTimes(2)-sepChirp))))
+surface(((simData.downedTimes(1):simData.downedTimes(2)-sepChirp)-simData.downedTimes(1))/fs,frex,10*log10(abs(filteredWt(:,simData.downedTimes(1):simData.downedTimes(2)-sepChirp))))
 axis tight
 shading interp
 xlabel('Time (s)')
