@@ -15,6 +15,8 @@ Window size should be chosen based on an estimate of the timescale on which the 
 Skip size is present to account for possible overfitting. If there is a known neural signal on a specified timescale, skip size should be used to ignore samples which may occur within that range of time.  
 Period distance should be based on the timescale of changes in the artifact waveform. One method to do this is to plot the data on the timescale of the period (found using FindPeriodLFP.m) and determine a timescale over which features are relatively constant. This plot can be produced using the following line of code:  
     `plot(mod(1:length(data)-1,Period),diff(data),'o')`
+    
+Additionally, there is a script provided in ParamSelection.m that displays a GUI for exploring the effects of PARRM parameters to help with selection. The left subpanel of the figure shows all samples in the data on the timescale of the period, while the right subpanel shows the original and PARRM filtered timeseries. Window size can be adjusted using the slider in the bottom left and PeriodWith corresponds to half the width of the x-axis (zooming in or out will alter the period width). The selected window in the left plot will provide an idea of the variability of the samples used to make a prediction of the artifact as well as how many samples will be used for the prediction. The right panel will provide an indication for how the artifact is being removed from the data. 
 
 ###### Example Use Case
 An example of how to use PARRM for a simulated LFP file is included in demo.m and will produce the following figures:
