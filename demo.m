@@ -22,7 +22,7 @@ guessPeriod=fs/simData.stimRate; % Starting point for period grid search
 
 % Find the period of stimulation in simulated data
 Period=FindPeriodLFP(simData.downedRecording,[1,length(simData.downedRecording)-1],guessPeriod);
-perDist=Period/120; % Window in period space for which samples will be averaged
+perDist=0.01; % Window in period space for which samples will be averaged
 % Create the linear filter
 PARRM=PeriodicFilter(Period,winSize,perDist,skipSize,winDir);
 % Filter using the linear filter and remove edge effects
